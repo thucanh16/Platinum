@@ -37,6 +37,7 @@ const itemDetails = {
   },
 };
 
+let chatConfiguration={engine:'consultant',external:false,configured:true};
 let data,revision=0,activeFilter='Tất cả',pendingDelete=null,logoDraft;
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let toastTimer;function toast(message){$('toast').textContent=message;$('toast').style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').style.display='none',4500)}
@@ -113,7 +114,6 @@ $('brand').innerHTML=c.logo?'<img src="'+esc(c.logo)+'" alt="Logo Platinum Techn
 $('footer-brand').innerHTML=$('brand').innerHTML;
 const symbols=['&lt;/&gt;','▤','✧','◇','◎','→'];$('services').innerHTML=data.services.map((r,i)=>'<article class="card" id="'+esc('services-item-'+r.id)+'">'+uploadedImage(r)+'<div class="service-icon"><span class="symbol">'+symbols[i%symbols.length]+'</span><span class="tag">'+esc(r.tag)+'</span></div><h3>'+esc(r.title)+'</h3><p>'+esc(r.description)+'</p></article>').join('')||empty();
 renderShowcase(data.products);
-$('product-image-note').hidden = !data.products.some(row => productImages.has(row.title.trim().toLowerCase()));
 $('products').innerHTML = data.products.map(row => {
   const art = productImages.get(row.title.trim().toLowerCase());
   const picture = art ? '<img class="product-art" src="/images/' + art[0] + '.webp" alt="' + esc(art[1]) + '" width="900" height="600" loading="lazy" decoding="async">' : '';
@@ -152,7 +152,12 @@ render=function(){renderBase();if(adminRoute)adminRender();else{enhanceNavigatio
 const adminRenderBase=adminRender;
 adminRender=function(){if($('collection').value==='leads'){$('add').classList.add('hidden');renderLeads()}else adminRenderBase();refreshStatus()};
 $('admin-open').onclick=()=>location.assign('/admin');
-async function refreshStatus(){try{const res=await fetch('/api/status',{cache:'no-store'});if(!res.ok)throw Error();const s=await res.json();statusData=s;$('dashboard').innerHTML='<div><strong>'+s.counts.content+'</strong><span>Mục nội dung</span></div><div><strong>'+s.counts.leads+'</strong><span>Yêu cầu tư vấn</span></div><div><strong>'+s.counts.pending+'</strong><span>Chưa liên hệ</span></div><div><strong>#'+s.revision+'</strong><span>Phiên bản nội dung</span></div>';$('db-status').textContent='● Dữ liệu đã kết nối · Nội dung được lưu và tải từ cơ sở dữ liệu.';const ready=s.ai==='local_ai_configured';$('ai-status').textContent=ready?'Đã chọn Ollama local. Cần chạy Ollama và tải model; khi chưa kết nối được, trợ lý dùng chế độ tư vấn theo ngữ cảnh.':'Trợ lý tư vấn theo nhu cầu, nhớ ngữ cảnh trong phiên và đọc dữ liệu MySQL mới nhất; không gọi dịch vụ ngoài.';$('chat-mode').textContent=ready?'AI local · có tư vấn dự phòng':'Tư vấn theo nhu cầu doanh nghiệp';$('chat-info').textContent=ready?'AI có thể có sai sót. Hãy xác nhận thông tin quan trọng với công ty.':'Tư vấn local theo ngữ cảnh. Đề xuất cần được công ty xác nhận.'}catch{$('db-status').textContent='Chưa kiểm tra được kết nối dữ liệu. Vui lòng tải lại trang.'}}
+async function refreshStatus(){try{const res=await fetch('/api/status',{cache:'no-store'});if(!res.ok)throw Error();const s=await res.json();statusData=s;$('dashboard').innerHTML='<div><strong>'+s.counts.content+'</strong><span>Mục nội dung</span></div><div><strong>'+s.counts.leads+'</strong><span>Yêu cầu tư vấn</span></div><div><strong>'+s.counts.pending+'</strong><span>Chưa liên hệ</span></div><div><strong>#'+s.revision+'</strong><span>Phiên bản nội dung</span></div>';$('db-status').textContent='● Dữ liệu đã kết nối · Nội dung được lưu và tải từ cơ sở dữ liệu.';chatConfiguration=s.chat||{engine:s.ai==='local_ai_configured'?'ollama':'consultant',external:false,configured:true};
+const external=chatConfiguration.engine==='gemini';
+$('chat-cloud-consent').hidden=!external;
+$('test-gemini').hidden=!external;
+$('ai-status').textContent=external?(chatConfiguration.configured?'Đã cấu hình key Gemini trên máy chủ; bấm kiểm tra để xác nhận kết nối.':'Đã chọn Gemini nhưng chưa có API key. Chạy npm run ai:gemini trong Terminal.'):(chatConfiguration.engine==='ollama'?'Đã chọn Ollama local; khi chưa kết nối được, trợ lý dùng tư vấn dự phòng.':'Trợ lý tư vấn theo hồ sơ và ngữ cảnh, không gọi dịch vụ ngoài.');
+updateChatDisclosure();}catch{$('db-status').textContent='Chưa kiểm tra được kết nối dữ liệu. Vui lòng tải lại trang.'}}
 async function renderLeads(){const box=$('admin-content');box.textContent='Đang tải yêu cầu…';try{const res=await fetch('/api/leads',{cache:'no-store'});const b=await res.json();if(!res.ok)throw Error(b.error);if($('collection').value!=='leads')return;box.innerHTML='<div class="admin-bar"><p>Yêu cầu gửi từ biểu mẫu trên website. Tối đa 200 yêu cầu mới nhất.</p><button class="btn" id="leads-refresh">Làm mới</button></div>'+b.leads.map(row=>'<article class="lead-card"><h3>'+esc(row.name)+'</h3><p class="lead-meta">'+esc(row.contact)+' · '+esc(new Date(row.created_at).toLocaleString('vi-VN'))+'</p><p class="lead-text">'+esc(row.message)+'</p><div class="buttons"><label>Trạng thái<select data-lead-status="'+esc(row.id)+'">'+[['new','Chưa liên hệ'],['contacted','Đã liên hệ'],['done','Hoàn thành']].map(([v,label])=>'<option value="'+v+'" '+(v===row.status?'selected':'')+'>'+label+'</option>').join('')+'</select></label><button class="btn danger" data-lead-delete="'+esc(row.id)+'">Xoá yêu cầu</button></div></article>').join('');$('leads-refresh').onclick=renderLeads;if(!b.leads.length)box.insertAdjacentHTML('beforeend','<p class="empty">Chưa có yêu cầu tư vấn. Hãy gửi thử một yêu cầu từ biểu mẫu liên hệ trên website.</p>')}catch(e){box.textContent=e.message||'Không tải được yêu cầu tư vấn.'}}
 $('admin-content').addEventListener('change',async e=>{const id=e.target.dataset.leadStatus;if(!id)return;const select=e.target;select.disabled=true;try{const res=await fetch('/api/leads/'+encodeURIComponent(id),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status:select.value})});const b=await res.json();if(!res.ok)throw Error(b.error);toast('Đã lưu trạng thái yêu cầu.');refreshStatus()}catch(e){toast(e.message);renderLeads()}finally{select.disabled=false}});
 $('admin-content').addEventListener('click',async e=>{const btn=e.target.closest('[data-lead-delete]');if(!btn||!window.confirm('Xoá yêu cầu tư vấn này khỏi cơ sở dữ liệu?'))return;btn.disabled=true;try{const res=await fetch('/api/leads/'+encodeURIComponent(btn.dataset.leadDelete),{method:'DELETE'});const b=await res.json();if(!res.ok)throw Error(b.error);toast('Đã xoá yêu cầu tư vấn.');await renderLeads();refreshStatus()}catch(e){toast(e.message);btn.disabled=false}});
@@ -176,18 +181,17 @@ async function sendChat(message) {
   bubble(message, 'user');
   const pending = bubble('Đang trả lời…', 'assistant');
   try {
-    const history = chatHistory.map(turn => ({...turn, content:turn.content.slice(0, 1200)}));
     const res = await fetch('/api/chat', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({message,history}),
+      body:JSON.stringify({message,allowExternalAi:$('allow-external-ai').checked}),
     });
     const response = await res.json();
     if (!res.ok) throw Error(response.error);
     const output = bubble(response.answer, 'assistant', response.source);
-    if(response.mode==='local_ai')$('chat-mode').textContent='AI local · Tư vấn theo nhu cầu';else $('chat-mode').textContent='Tư vấn local theo ngữ cảnh';
+    $('chat-mode').textContent=response.mode==='gemini'?'Google Gemini · Tư vấn theo hồ sơ':response.mode==='local_ai'?'AI local · Tư vấn theo nhu cầu':'Tư vấn theo hồ sơ Platinum';
     updateSuggestions(response.suggestions);
-    if(response.notice)$('chat-info').textContent=response.notice;
+    $('chat-info').textContent=response.notice||(response.mode==='gemini'?'Google Gemini xử lý nội dung chat. Cần xác nhận thông tin quan trọng với công ty.':'Câu trả lời dựa trên hồ sơ và ngữ cảnh trao đổi.');
     if (Object.hasOwn(chatActions, response.action)) {
       const [label, href] = chatActions[response.action];
       const link = document.createElement('a');
@@ -272,4 +276,18 @@ $('restore-corporate-images').onclick=async()=>{
   if(await save(next)){localStorage.removeItem(imageBackupKey);status.textContent='Đã khôi phục '+changed+' lựa chọn ảnh trước đó.';}
  }catch(error){status.textContent='Chưa khôi phục được: '+error.message;}
  finally{imageRefreshBusy=false;button.disabled=false;}
+};
+
+function updateChatDisclosure(){
+ const external=chatConfiguration.engine==='gemini';
+ $('chat-mode').textContent=external&&$('allow-external-ai').checked?'Google Gemini · Có tư vấn dự phòng':chatConfiguration.engine==='ollama'?'AI local · Có tư vấn dự phòng':'Tư vấn theo hồ sơ Platinum';
+ $('chat-info').textContent=external?'Nếu chọn dùng Gemini, câu hỏi, lịch sử chat và hồ sơ công khai Platinum sẽ được gửi tới Google. Không nhập mật khẩu hay API key vào chat.':'Tư vấn theo hồ sơ tại máy chủ; không gửi nội dung tới Google.';
+}
+$('allow-external-ai').onchange=updateChatDisclosure;
+$('test-gemini').onclick=async()=>{
+ const button=$('test-gemini');button.disabled=true;
+ $('gemini-test-status').textContent='Đang kiểm tra một yêu cầu ngắn tới Google…';
+ try{const response=await fetch('/api/ai/test',{method:'POST'});const result=await response.json();if(!response.ok)throw Error(result.message||result.error||'Chưa kiểm tra được.');$('gemini-test-status').textContent=result.message+(result.ok?' Mô hình: '+result.model:'');}
+ catch(error){$('gemini-test-status').textContent=error.message;}
+ finally{button.disabled=false;}
 };

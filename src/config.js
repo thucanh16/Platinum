@@ -11,4 +11,6 @@ export const config={
  chatEngine:process.env.CHAT_ENGINE||'consultant',
  ollamaUrl:process.env.OLLAMA_URL||'http://127.0.0.1:11434',
  ollamaModel:process.env.OLLAMA_MODEL||'qwen2.5:3b',
+ geminiApiKey:process.env.GEMINI_API_KEY||'',
+ geminiModel:process.env.GEMINI_MODEL||'gemini-4-hydrogen',
 };

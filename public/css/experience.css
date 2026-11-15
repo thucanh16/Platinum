@@ -97,3 +97,12 @@
 #products>.card,#projects>.card{display:flex;flex-direction:column}
 #products>.card>p,#projects>.card>p{flex:1}
 #products>.card>.record-link,#projects>.card>.record-link{margin-top:auto}
+.chat-cloud-consent{display:flex;gap:9px;align-items:flex-start;padding:10px 14px;background:#f5f4ec;border-top:1px solid #e4e2d6;font-size:14px;line-height:1.5;color:#465340}
+.chat-cloud-consent[hidden]{display:none}
+.chat-cloud-consent input{width:17px;height:17px;flex-shrink:0;margin:3px 0 0;padding:0;accent-color:#315e4f}
+.chat-cloud-consent span{min-width:0}
+#test-gemini[hidden]{display:none}
+.chat-panel{max-height:calc(100dvh - 28px);overflow:hidden}
+.chat-panel .chat-messages{min-height:80px;flex:1;overflow:auto}
+.chat-panel{height:min(700px,calc(100dvh - 110px))}
+.chat-panel>.chat-head,.chat-panel>.chat-form,.chat-panel>.chat-info,.chat-panel>.chat-cloud-consent{flex-shrink:0}
