@@ -1,0 +1,265 @@
+{
+  "data": {
+    "company": {
+      "ceo": "Trương Văn Trường",
+      "tax": "3301719812",
+      "logo": "",
+      "about": "Thành lập năm 2023, Platinum Technology được dẫn dắt bởi ông Trương Văn Trường — Giám đốc kiêm Nhà sáng lập với hơn 20 năm kinh nghiệm trong lĩnh vực công nghệ thông tin. Đội ngũ dưới 50 nhân sự làm chủ toàn bộ vòng đời sản phẩm: từ phân tích nghiệp vụ, thiết kế, lập trình đến triển khai, vận hành và bảo trì.",
+      "email": "contact@platinumtechnology.net",
+      "intro": "Platinum Technology phát triển phần mềm và AI Agent giúp doanh nghiệp quản lý tập trung, tự động hóa công việc và phục vụ khách hàng tốt hơn.",
+      "phone": "0948 496 749",
+      "title": "Công ty TNHH Công nghệ Platinum",
+      "branch": "179 Trần Hưng Đạo, P. An Hải, TP Đà Nẵng",
+      "slogan": "Tiên phong & Chất lượng",
+      "vision": "Trở thành đối tác tin cậy hàng đầu trong lĩnh vực cung cấp giải pháp phần mềm cho doanh nghiệp, mang lại giá trị cao nhất cho khách hàng và góp phần vào sự phát triển bền vững của cộng đồng.",
+      "address": "Lô E1-28, Đường Số 2, KĐT Phú Mỹ An, P. An Cựu, TP Huế",
+      "founded": "2023",
+      "mission": "Cung cấp các giải pháp phần mềm đột phá và tối ưu, phục vụ hiệu quả mục tiêu kinh doanh của khách hàng. Đặt lợi ích khách hàng lên hàng đầu và xây dựng quan hệ đối tác lâu dài, bền vững.",
+      "website": "www.platinumtechnology.net"
+    },
+    "services": [
+      {
+        "id": "services-0",
+        "title": "Phát triển phần mềm",
+        "description": "ERP, CRM, DMS, kế toán, fintech và logistic theo yêu cầu. AI hỗ trợ phân tích, lập trình và kiểm thử.",
+        "tag": "01 / SOFTWARE",
+        "details": "",
+        "image": "/uploads/5a3ab3d4-ed7e-48c4-8fa9-b8b5f3eecd47.webp"
+      },
+      {
+        "id": "services-1",
+        "title": "Website & ứng dụng di động",
+        "description": "Xây dựng ứng dụng web, mobile và nền tảng số cho doanh nghiệp SME, đơn vị và tổ chức.",
+        "tag": "02 / WEB & MOBILE",
+        "details": "",
+        "image": "/uploads/e463bf4e-807b-4646-85c2-82bb4febce4a.webp"
+      },
+      {
+        "id": "services-2",
+        "title": "AI agent cho doanh nghiệp",
+        "description": "Trợ lý bán hàng, chăm sóc khách hàng qua Zalo, WhatsApp, website và tự động hóa quy trình nội bộ.",
+        "tag": "03 / ARTIFICIAL INTELLIGENCE",
+        "details": "",
+        "image": "/uploads/b18ae854-85ff-49c1-ab2f-fbef1c9785b8.webp"
+      },
+      {
+        "id": "services-3",
+        "title": "Thiết kế UI/UX",
+        "description": "Tư vấn giải pháp và thiết kế trải nghiệm, giao diện phù hợp với nhu cầu và mục tiêu kinh doanh.",
+        "tag": "04 / EXPERIENCE",
+        "details": "",
+        "image": "/uploads/3efc7e6b-5600-4c83-b3a3-b5b23b19c14f.webp"
+      },
+      {
+        "id": "services-4",
+        "title": "Cloud, DevOps & bảo trì",
+        "description": "Triển khai cloud, Kubernetes, DevOps; bảo trì, nâng cấp hệ thống và ứng dụng theo yêu cầu nền tảng.",
+        "tag": "05 / INFRASTRUCTURE",
+        "details": "",
+        "image": "/uploads/f11e4a6b-50b7-4518-aaae-c27d1c27b61f.webp"
+      },
+      {
+        "id": "services-5",
+        "title": "Tư vấn & đào tạo AI",
+        "description": "Tư vấn chuyển đổi số; đào tạo ứng dụng AI và lập trình với AI cho người đi làm, sinh viên, cộng đồng khởi nghiệp.",
+        "tag": "06 / CONSULTING",
+        "details": "",
+        "image": "/uploads/3a864aa7-ba4f-4b3a-8eeb-5eb8b33fa70a.webp"
+      }
+    ],
+    "products": [
+      {
+        "id": "products-0",
+        "title": "Linora",
+        "description": "Nền tảng mạng xã hội giao dịch mua – bán: ứng dụng di động, hệ thống quản trị, dịch vụ chat và website.",
+        "tag": "NỀN TẢNG GIAO DỊCH",
+        "details": "Mục đích: Kết nối người mua và người bán trên một nền tảng giao dịch có yếu tố mạng xã hội.\nThành phần: Ứng dụng di động và website cho người dùng, dịch vụ chat để trao đổi, hệ thống quản trị để vận hành nền tảng.\nTình huống sử dụng: Người mua có thể tìm hiểu mặt hàng và trao đổi với người bán qua chat."
+      },
+      {
+        "id": "products-1",
+        "title": "Linora-ERP",
+        "description": "SaaS quản trị doanh nghiệp, thuộc hệ sinh thái sản phẩm Linora.",
+        "tag": "QUẢN TRỊ DOANH NGHIỆP",
+        "details": ""
+      },
+      {
+        "id": "products-2",
+        "title": "Linora-AI",
+        "description": "Giải pháp AI cho doanh nghiệp, gắn với hệ sinh thái Linora.",
+        "tag": "TRÍ TUỆ NHÂN TẠO",
+        "details": ""
+      },
+      {
+        "id": "products-3",
+        "title": "Platinum AI Agentic",
+        "description": "Bộ AI agent cho bán hàng, chăm sóc khách hàng đa kênh và tự động hóa quy trình nội bộ.",
+        "tag": "TỰ ĐỘNG HÓA",
+        "details": "Mục đích: Hỗ trợ bán hàng, chăm sóc khách hàng và tự động hóa công việc nội bộ.\nKênh có thể triển khai: Website, Zalo hoặc WhatsApp, tùy nhu cầu tích hợp.\nTình huống sử dụng: Hỗ trợ giải đáp câu hỏi thường gặp của khách hàng hoặc xử lý các bước lặp lại trong quy trình nội bộ.",
+        "image": "/uploads/78ebf863-ee42-4e0c-935f-54b442cb13b5.png"
+      }
+    ],
+    "projects": [
+      {
+        "id": "projects-0",
+        "title": "MCPAYMENT",
+        "description": "Phần mềm cổng thanh toán.",
+        "tag": "Fintech",
+        "details": ""
+      },
+      {
+        "id": "projects-1",
+        "title": "HUEWACO",
+        "description": "Phần mềm xử lý số tự động trong giao dịch khách hàng.",
+        "tag": "Vận hành",
+        "details": ""
+      },
+      {
+        "id": "projects-2",
+        "title": "Thanh Giong",
+        "description": "Phần mềm ERP chuỗi đại lý phân phối gas.",
+        "tag": "ERP",
+        "details": ""
+      },
+      {
+        "id": "projects-3",
+        "title": "AR",
+        "description": "Tham gia phát triển phần mềm kiểm toán cho các công ty kế toán vừa và nhỏ.",
+        "tag": "Kiểm toán",
+        "details": ""
+      },
+      {
+        "id": "projects-4",
+        "title": "ARVI",
+        "description": "Tham gia phát triển phần mềm tự động hóa và phân tích dữ liệu nghiệp vụ kiểm toán.",
+        "tag": "Kiểm toán",
+        "details": ""
+      },
+      {
+        "id": "projects-5",
+        "title": "GOSAFE",
+        "description": "Phần mềm hệ thống quản lý và phân phối tài xế.",
+        "tag": "Vận hành",
+        "details": ""
+      },
+      {
+        "id": "projects-6",
+        "title": "KG",
+        "description": "Phần mềm hệ thống quản lý và phân phối bất động sản.",
+        "tag": "Bất động sản",
+        "details": ""
+      },
+      {
+        "id": "projects-7",
+        "title": "Linora",
+        "description": "Phần mềm nền tảng mạng xã hội giao dịch mua – bán.",
+        "tag": "Nền tảng số",
+        "details": ""
+      }
+    ],
+    "process": [
+      {
+        "id": "process-0",
+        "title": "Khảo sát hệ thống",
+        "description": "Trực tiếp tìm hiểu hệ thống và nhu cầu thực tế tại doanh nghiệp.",
+        "tag": "01",
+        "details": ""
+      },
+      {
+        "id": "process-1",
+        "title": "Báo giá & hợp đồng",
+        "description": "Thống nhất phạm vi công việc, chi phí và hợp đồng.",
+        "tag": "02",
+        "details": ""
+      },
+      {
+        "id": "process-2",
+        "title": "Tư vấn giải pháp",
+        "description": "Tập trung giải quyết khó khăn về IT của khách hàng.",
+        "tag": "03",
+        "details": ""
+      },
+      {
+        "id": "process-3",
+        "title": "Lập kế hoạch",
+        "description": "Xây dựng timeline để hai bên chủ động công việc và nhân sự.",
+        "tag": "04",
+        "details": ""
+      },
+      {
+        "id": "process-4",
+        "title": "Triển khai",
+        "description": "Theo hồ sơ năng lực: hotline 24/7, phản hồi trong 10 phút; “Có mặt nhanh – Xử lý nhanh – Bất chấp thời gian”.",
+        "tag": "05",
+        "details": ""
+      },
+      {
+        "id": "process-5",
+        "title": "Báo cáo & đồng hành",
+        "description": "Báo cáo công việc, biên bản đề xuất, nhật ký và tổng kết.",
+        "tag": "06",
+        "details": ""
+      }
+    ],
+    "values": [
+      {
+        "id": "values-0",
+        "title": "Tiên phong",
+        "description": "Không ngừng đổi mới, áp dụng công nghệ mới và kiến tạo giải pháp đột phá.",
+        "tag": "01",
+        "details": ""
+      },
+      {
+        "id": "values-1",
+        "title": "Chất lượng",
+        "description": "Cam kết chất lượng trong từng dự án; kiểm thử nghiêm ngặt và cập nhật công nghệ.",
+        "tag": "02",
+        "details": ""
+      },
+      {
+        "id": "values-2",
+        "title": "Tận tâm",
+        "description": "Chuyên nghiệp trong giao tiếp và phục vụ, sẵn sàng hỗ trợ khách hàng 24/7.",
+        "tag": "03",
+        "details": ""
+      },
+      {
+        "id": "values-3",
+        "title": "Tư vấn chuyên sâu",
+        "description": "Tùy chỉnh giải pháp theo đúng nhu cầu và mục tiêu của từng khách hàng.",
+        "tag": "04",
+        "details": ""
+      },
+      {
+        "id": "values-4",
+        "title": "Quan hệ bền vững",
+        "description": "Đồng hành lâu dài trên nền tảng tin cậy, minh bạch và tôn trọng.",
+        "tag": "05",
+        "details": ""
+      }
+    ],
+    "community": [
+      {
+        "id": "community-0",
+        "title": "Kết nối đại học",
+        "description": "Ký MOU hợp tác với Đại học Phú Xuân; chia sẻ cùng sinh viên và cộng đồng khởi nghiệp.",
+        "tag": "HỢP TÁC",
+        "details": ""
+      },
+      {
+        "id": "community-1",
+        "title": "Đồng hành khởi nghiệp Huế",
+        "description": "Giám đốc là Ủy viên BCH Hội Doanh nhân trẻ TP Huế, Chủ nhiệm CLB Khởi nghiệp Huế nhiệm kỳ 2026–2028.",
+        "tag": "CỘNG ĐỒNG",
+        "details": ""
+      },
+      {
+        "id": "community-2",
+        "title": "Kết nối đổi mới sáng tạo",
+        "description": "Phối hợp với Trung tâm Khởi nghiệp & Đổi mới sáng tạo (53 Nguyễn Huệ) và Sở KH&CN TP Huế trong các hoạt động như Cà phê khởi nghiệp.",
+        "tag": "ĐỔI MỚI",
+        "details": ""
+      }
+    ]
+  },
+  "revision": 17
+}
